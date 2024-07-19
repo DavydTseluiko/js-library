@@ -1,3 +1,4 @@
+const container = document.querySelector(".container");
 const myLibrary = [
   {
     title: "The Hobbit",
@@ -59,7 +60,7 @@ function createBookElement(book) {
 function displayBooksOnTheScreen() {
   myLibrary.forEach((book) => {
     const bookElement = createBookElement(book);
-    document.body.appendChild(bookElement);
+    container.append(bookElement);
   });
 }
 
