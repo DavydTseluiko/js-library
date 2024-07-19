@@ -10,7 +10,14 @@ function Book(title, author, pages, read) {
   };
 }
 
-function addBookToLibrary() {}
+function addBookToLibrary() {
+  const title = prompt("Title");
+  const author = prompt("Author");
+  const pages = +prompt("Pages");
+  const read = prompt("Read?");
 
-let theHobbit = new Book("The Hobbit", "J.R.R. Tolkien", 295, "not read yet");
-console.log(theHobbit.info());
+  const newBook = new Book(title, author, pages, read);
+  myLibrary.push(newBook);
+}
+
+addBookToLibrary();
