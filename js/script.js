@@ -1,4 +1,8 @@
 const container = document.querySelector(".container");
+const modal = document.querySelector(".modal");
+const modalForm = document.querySelector(".modal > form");
+const addBookButton = document.querySelector(".add-book");
+
 const myLibrary = [
   {
     title: "The Hobbit",
@@ -65,3 +69,5 @@ function displayBooksOnTheScreen() {
 }
 
 displayBooksOnTheScreen();
+addBookButton.addEventListener("click", () => modal.showModal());
+modal.addEventListener("cancel", () => modalForm.reset());

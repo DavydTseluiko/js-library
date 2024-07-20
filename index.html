@@ -10,6 +10,20 @@
     <header class="header">
       <h1>Library</h1>
     </header>
+    <button class="add-book">+ Add Book</button>
+    <dialog class="modal">
+      <form method="dialog">
+        <h2>Add new book</h2>
+        <input type="text" placeholder="Title" />
+        <input type="text" placeholder="Author" />
+        <input type="number" min="0" placeholder="Pages" />
+        <div>
+          <label for="read">Have you read it?</label>
+          <input type="checkbox" id="read" />
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+    </dialog>
     <div class="container"></div>
     <script src="./js/script.js"></script>
   </body>

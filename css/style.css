@@ -5,6 +5,7 @@
   --grey: #f0eef1;
   --black: #050505;
   --red: #ff7070;
+  --green: rgb(26, 202, 20, 0.7);
   --light-green: #9fff9c;
   --light-red: #ff9c9c;
   --border-radius: 8px;
@@ -36,8 +37,93 @@ header {
   box-shadow: var(--shadow);
 }
 
+.add-book {
+  display: block;
+  padding: 20px;
+  border-radius: var(--border-radius);
+  margin: 30px auto;
+  background-color: transparent;
+  border: none;
+  font-size: 24px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.add-book:hover {
+  background-color: rgba(5, 5, 5, 0.095);
+}
+
+.modal {
+  position: fixed;
+  inset: 0px;
+  max-width: 100vw;
+  max-height: 100dvh;
+  margin: auto;
+  border: none;
+  background-color: var(--grey);
+  border-radius: var(--border-radius);
+}
+
+.modal::backdrop {
+  background: rgba(5, 5, 5, 0.6);
+}
+
+.modal > form {
+  text-align: center;
+  padding: 20px;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.modal input[type="text"],
+.modal input[type="number"] {
+  font-size: 20px;
+  background-color: var(--white);
+  border-radius: var(--border-radius);
+  padding: 10px;
+  border: none;
+}
+
+.modal input::-webkit-outer-spin-button,
+.modal input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.modal input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.modal > form > div {
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.modal > form > div > input {
+  height: 18px;
+  width: 18px;
+}
+
+.modal > form > button {
+  font-size: 20px;
+  padding: 10px;
+  background-color: var(--light-green);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.modal > form > button:hover {
+  background-color: var(--green);
+}
+
 .container {
-  margin-top: 100px;
   display: flex;
   flex-wrap: wrap;
   gap: 50px;
