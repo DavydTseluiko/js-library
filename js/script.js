@@ -71,3 +71,9 @@ function displayBooksOnTheScreen() {
 displayBooksOnTheScreen();
 addBookButton.addEventListener("click", () => modal.showModal());
 modal.addEventListener("cancel", () => modalForm.reset());
+modal.addEventListener("click", (event) => {
+  if (event.target === modal) {
+    modalForm.reset();
+    modal.close();
+  }
+});
