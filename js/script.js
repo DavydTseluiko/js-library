@@ -37,8 +37,8 @@ function addBookToLibrary() {
   myLibrary.push(newBook);
 }
 
-function createDivElement(className, textContent) {
-  const div = document.createElement("div");
+function createPElement(className, textContent) {
+  const div = document.createElement("p");
   div.className = className;
   div.textContent = textContent;
   return div;
@@ -48,10 +48,10 @@ function createBookElement(book) {
   const card = document.createElement("div");
   card.className = "card";
 
-  const title = createDivElement("title", book.title);
-  const author = createDivElement("author", book.author);
-  const pages = createDivElement("pages", book.pages);
-  const read = createDivElement("read", book.read);
+  const title = createPElement("title", book.title);
+  const author = createPElement("author", book.author);
+  const pages = createPElement("pages", book.pages);
+  const read = createPElement("read", book.read);
 
   card.append(title, author, pages, read);
   return card;
