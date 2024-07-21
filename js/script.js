@@ -28,9 +28,9 @@ function createBookElement(book) {
   const card = document.createElement("div");
   card.className = "card";
 
-  const title = createPElement("title", book.title);
+  const title = createPElement("title", '"' + book.title + '"');
   const author = createPElement("author", book.author);
-  const pages = createPElement("pages", book.pages);
+  const pages = createPElement("pages", book.pages + " pages");
 
   const read = document.createElement("button");
   if (book.read === "Read") {
@@ -85,11 +85,11 @@ container.addEventListener("click", (event) => {
     if (event.target.classList[1] === "not-read") {
       event.target.classList.remove("not-read");
       event.target.classList.add("read");
-      event.target.textContent = "Read"
+      event.target.textContent = "Read";
     } else {
       event.target.classList.remove("read");
       event.target.classList.add("not-read");
-      event.target.textContent = "Not read"
+      event.target.textContent = "Not read";
     }
   }
 });

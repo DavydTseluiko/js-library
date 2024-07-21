@@ -147,6 +147,12 @@ header {
   border-radius: var(--border-radius);
 }
 
+.card > .title,
+.card > .author {
+  text-align: center;
+  width: 100%;
+}
+
 .read,
 .not-read {
   width: 100%;
