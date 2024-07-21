@@ -146,3 +146,29 @@ header {
   justify-content: center;
   border-radius: var(--border-radius);
 }
+
+.read,
+.not-read {
+  width: 100%;
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 15px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.read {
+  background-color: var(--green);
+}
+
+.read:hover {
+  background-color: var(--light-green);
+}
+
+.not-read {
+  background-color: var(--red);
+}
+
+.not-read:hover {
+  background-color: var(--light-red);
+}

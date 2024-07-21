@@ -10,14 +10,18 @@ function Book(modalForm) {
   this.title = modalForm[0].value;
   this.author = modalForm[1].value;
   this.pages = modalForm[2].value;
-  this.read = modalForm[3].value;
+  if (modalForm[3].checked) {
+    this.read = "Read";
+  } else {
+    this.read = "Not read";
+  }
 }
 
 function createPElement(className, textContent) {
-  const div = document.createElement("p");
-  div.className = className;
-  div.textContent = textContent;
-  return div;
+  const p = document.createElement("p");
+  p.className = className;
+  p.textContent = textContent;
+  return p;
 }
 
 function createBookElement(book) {
@@ -27,7 +31,14 @@ function createBookElement(book) {
   const title = createPElement("title", book.title);
   const author = createPElement("author", book.author);
   const pages = createPElement("pages", book.pages);
-  const read = createPElement("read", book.read);
+
+  const read = document.createElement("button");
+  if (book.read === "Read") {
+    read.className = "checkbox read";
+  } else {
+    read.className = "checkbox not-read";
+  }
+  read.textContent = book.read;
 
   card.append(title, author, pages, read);
   return card;
@@ -66,5 +77,19 @@ submitForm.addEventListener("click", (event) => {
     displayBooksOnTheScreen();
     modalForm.reset();
     modal.close();
+  }
+});
+container.addEventListener("click", (event) => {
+  if (event.target.classList[0] == "checkbox") {
+    console.log(event.target.classList[1]);
+    if (event.target.classList[1] === "not-read") {
+      event.target.classList.remove("not-read");
+      event.target.classList.add("read");
+      event.target.textContent = "Read"
+    } else {
+      event.target.classList.remove("read");
+      event.target.classList.add("not-read");
+      event.target.textContent = "Not read"
+    }
   }
 });
