@@ -2,43 +2,15 @@ const container = document.querySelector(".container");
 const modal = document.querySelector(".modal");
 const modalForm = document.querySelector(".modal > form");
 const addBookButton = document.querySelector(".add-book");
+const submitForm = document.querySelector("#submit");
 
-const myLibrary = [
-  {
-    title: "The Hobbit",
-    author: "J.R.R. Tolkien",
-    pages: "295",
-    read: "not read yet",
-  },
-  {
-    title: "The David",
-    author: "J.R.R. Tolkien",
-    pages: "2434",
-    read: "not read yet",
-  },
-  {
-    title: "The Someone",
-    author: "J.R.R. Tolkien",
-    pages: "123",
-    read: "not read yet",
-  },
-];
+const myLibrary = [];
 
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
-}
-
-function addBookToLibrary() {
-  const title = prompt("Title");
-  const author = prompt("Author");
-  const pages = +prompt("Pages");
-  const read = prompt("Read?");
-
-  const newBook = new Book(title, author, pages, read);
-  myLibrary.push(newBook);
+function Book(modalForm) {
+  this.title = modalForm[0].value;
+  this.author = modalForm[1].value;
+  this.pages = modalForm[2].value;
+  this.read = modalForm[3].value;
 }
 
 function createPElement(className, textContent) {
@@ -61,6 +33,11 @@ function createBookElement(book) {
   return card;
 }
 
+function addBookToLibrary(modalForm) {
+  const newBook = new Book(modalForm);
+  myLibrary.push(newBook);
+}
+
 function displayBooksOnTheScreen() {
   myLibrary.forEach((book) => {
     const bookElement = createBookElement(book);
@@ -68,11 +45,25 @@ function displayBooksOnTheScreen() {
   });
 }
 
+function deleteCardsFromScreen() {
+  container.innerHTML = "";
+}
+
 displayBooksOnTheScreen();
 addBookButton.addEventListener("click", () => modal.showModal());
 modal.addEventListener("cancel", () => modalForm.reset());
 modal.addEventListener("click", (event) => {
   if (event.target === modal) {
+    modalForm.reset();
+    modal.close();
+  }
+});
+submitForm.addEventListener("click", (event) => {
+  if (modalForm.checkValidity() === true) {
+    event.preventDefault();
+    addBookToLibrary(modalForm);
+    deleteCardsFromScreen();
+    displayBooksOnTheScreen();
     modalForm.reset();
     modal.close();
   }

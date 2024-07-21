@@ -14,14 +14,14 @@
     <dialog class="modal">
       <form method="dialog">
         <h2>Add new book</h2>
-        <input type="text" placeholder="Title" />
-        <input type="text" placeholder="Author" />
-        <input type="number" min="0" placeholder="Pages" />
+        <input type="text" required class="title requiredField" placeholder="Title" />
+        <input type="text" required class="author requiredField" placeholder="Author" />
+        <input type="number" required class="pages requiredField" min="0" placeholder="Pages" />
         <div>
           <label for="read">Have you read it?</label>
-          <input type="checkbox" id="read" />
+          <input type="checkbox" class="read" id="read" />
         </div>
-        <button type="submit">Submit</button>
+        <button id="submit" type="submit">Submit</button>
       </form>
     </dialog>
     <div class="container"></div>
