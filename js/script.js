@@ -24,7 +24,7 @@ function createPElement(className, textContent) {
   return p;
 }
 
-function createBookElement(book) {
+function createBookElement(book, dataAttributeCounter) {
   const card = document.createElement("div");
   card.className = "card";
 
@@ -40,7 +40,12 @@ function createBookElement(book) {
   }
   read.textContent = book.read;
 
-  card.append(title, author, pages, read);
+  const remove = document.createElement("button");
+  remove.className = "remove";
+  remove.setAttribute("data-id", dataAttributeCounter);
+  remove.textContent = "Remove";
+
+  card.append(title, author, pages, read, remove);
   return card;
 }
 
@@ -50,8 +55,10 @@ function addBookToLibrary(modalForm) {
 }
 
 function displayBooksOnTheScreen() {
+  let dataAttributeCounter = 0;
   myLibrary.forEach((book) => {
-    const bookElement = createBookElement(book);
+    const bookElement = createBookElement(book, dataAttributeCounter);
+    dataAttributeCounter++;
     container.append(bookElement);
   });
 }
@@ -91,5 +98,11 @@ container.addEventListener("click", (event) => {
       event.target.classList.add("not-read");
       event.target.textContent = "Not read";
     }
+  }
+  if (event.target.className === "remove") {
+    const index = event.target.getAttribute("data-id");
+    myLibrary.splice(index, 1);
+    deleteCardsFromScreen();
+    displayBooksOnTheScreen();
   }
 });

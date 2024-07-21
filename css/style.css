@@ -138,7 +138,7 @@ header {
   color: var(--black);
   width: 300px;
   flex-wrap: wrap;
-  gap: 30px;
+  gap: 20px;
   font-size: 20px;
   display: flex;
   flex-direction: column;
@@ -154,7 +154,8 @@ header {
 }
 
 .read,
-.not-read {
+.not-read,
+.remove {
   width: 100%;
   border: none;
   border-radius: var(--border-radius);
