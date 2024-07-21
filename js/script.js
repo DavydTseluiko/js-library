@@ -10,11 +10,7 @@ function Book(modalForm) {
   this.title = modalForm[0].value;
   this.author = modalForm[1].value;
   this.pages = modalForm[2].value;
-  if (modalForm[3].checked) {
-    this.read = "Read";
-  } else {
-    this.read = "Not read";
-  }
+  this.read = modalForm[3].checked ? "Read" : "Not read";
 }
 
 function createPElement(className, textContent) {
@@ -33,11 +29,10 @@ function createBookElement(book, dataAttributeCounter) {
   const pages = createPElement("pages", book.pages + " pages");
 
   const read = document.createElement("button");
-  if (book.read === "Read") {
-    read.className = "checkbox read";
-  } else {
-    read.className = "checkbox not-read";
-  }
+  read.className =
+    book.read === "Read"
+      ? (read.className = "checkbox read")
+      : (read.className = "checkbox not-read");
   read.textContent = book.read;
 
   const remove = document.createElement("button");
@@ -88,15 +83,20 @@ submitForm.addEventListener("click", (event) => {
 });
 container.addEventListener("click", (event) => {
   if (event.target.classList[0] == "checkbox") {
-    console.log(event.target.classList[1]);
+    const index = event.target.parentNode.children[4].getAttribute("data-id");
+
     if (event.target.classList[1] === "not-read") {
       event.target.classList.remove("not-read");
       event.target.classList.add("read");
       event.target.textContent = "Read";
+
+      myLibrary[index].read = "Read"
     } else {
       event.target.classList.remove("read");
       event.target.classList.add("not-read");
       event.target.textContent = "Not read";
+      
+      myLibrary[index].read = "Not read"
     }
   }
   if (event.target.className === "remove") {
